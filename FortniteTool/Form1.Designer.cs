@@ -64,8 +64,9 @@
             this.WidthTxtBox.Name = "WidthTxtBox";
             this.WidthTxtBox.Size = new System.Drawing.Size(265, 20);
             this.WidthTxtBox.TabIndex = 1;
+            this.WidthTxtBox.Tag = "width";
             this.WidthTxtBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.WidthTxtBox.TextChanged += new System.EventHandler(this.WidthTxtBox_changed);
+            this.WidthTxtBox.TextChanged += new System.EventHandler(this.Box_txtchanged);
             this.WidthTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_keypress);
             // 
             // HeightTxtBox
@@ -77,8 +78,9 @@
             this.HeightTxtBox.Name = "HeightTxtBox";
             this.HeightTxtBox.Size = new System.Drawing.Size(265, 20);
             this.HeightTxtBox.TabIndex = 2;
+            this.HeightTxtBox.Tag = "height";
             this.HeightTxtBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.HeightTxtBox.TextChanged += new System.EventHandler(this.HeigthTxtbox_changed);
+            this.HeightTxtBox.TextChanged += new System.EventHandler(this.Box_txtchanged);
             this.HeightTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_keypress);
             // 
             // Hauteurlbl
@@ -136,8 +138,9 @@
             this.mFPSTxtBox.Name = "mFPSTxtBox";
             this.mFPSTxtBox.Size = new System.Drawing.Size(265, 20);
             this.mFPSTxtBox.TabIndex = 7;
+            this.mFPSTxtBox.Tag = "m_fps";
             this.mFPSTxtBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.mFPSTxtBox.TextChanged += new System.EventHandler(this.m_fpstxtBox_changed);
+            this.mFPSTxtBox.TextChanged += new System.EventHandler(this.Box_txtchanged);
             this.mFPSTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_keypress);
             // 
             // mFPSlbl

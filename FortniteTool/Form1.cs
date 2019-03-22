@@ -17,8 +17,6 @@ namespace FortniteTool
         int userHeight => int.Parse(HeightTxtBox.Text);
         int userM_FPS => int.Parse(mFPSTxtBox.Text);
 
-
-
         public Form1()
         {
             InitializeComponent();
@@ -29,14 +27,13 @@ namespace FortniteTool
             WidthTxtBox.Text = TextTool.GetNumbers("ResolutionSizeX=").ToString();
             HeightTxtBox.Text = TextTool.GetNumbers("ResolutionSizeY=").ToString();
             mFPSTxtBox.Text = TextTool.GetNumbers("FrameRateLimit=").ToString();
+         
+            Global.fsMode = (Global.FullScreenMode)TextTool.GetNumbers("FullscreenMode=");
 
-            if (TextTool.GetNumbers("FullscreenMode=") == 0)
+            if (Global.fsMode == 0)
             {
                 FullscreenchckBox.Checked = true;
             }
-
-
-            Global.fsMode = (Global.FullScreenMode)TextTool.GetNumbers("FullscreenMode=");
 
             int.TryParse(WidthTxtBox.Text, out Global.ResX);
             int.TryParse(HeightTxtBox.Text, out Global.ResY);
@@ -77,45 +74,41 @@ namespace FortniteTool
             }
         }
 
-        private void WidthTxtBox_changed(object sender, EventArgs e)
+        private void Box_txtchanged(object sender, EventArgs e)
         {
-            if (WidthTxtBox.Text == "")
+            TextBox txtbox = sender as TextBox;
+
+            if (txtbox.Tag.ToString() == "width" && txtbox.Text == "")
             {
-                transparentwidthlabel.Text = Global.M_FPS.ToString();
+                transparentwidthlabel.Text = Global.ResX.ToString();
                 transparentwidthlabel.Show();
                 Sumlbl.Text = "Résolution choisie : ";
             }
-            else
+            else if(txtbox.Tag.ToString() == "width" && txtbox.Text != "")
             {
                 transparentwidthlabel.Hide();
                 Sumlbl.Text = "Résolution choisie : " + WidthTxtBox.Text + "x" + HeightTxtBox.Text + "@" + mFPSTxtBox.Text + " FPS";
             }
-        }
 
-        private void HeigthTxtbox_changed(object sender, EventArgs e)
-        {
-            if (HeightTxtBox.Text == "")
+            if (txtbox.Tag.ToString() == "height" && txtbox.Text == "")
             {
-                transparentheightlabel.Text = Global.M_FPS.ToString();
+                transparentheightlabel.Text = Global.ResY.ToString();
                 transparentheightlabel.Show();
                 Sumlbl.Text = "Résolution choisie : ";
             }
-            else
+            else if (txtbox.Tag.ToString() == "height" && txtbox.Text != "")
             {
                 transparentheightlabel.Hide();
                 Sumlbl.Text = "Résolution choisie : " + WidthTxtBox.Text + "x" + HeightTxtBox.Text + "@" + mFPSTxtBox.Text + " FPS";
             }
-        }
 
-        private void m_fpstxtBox_changed(object sender, EventArgs e)
-        {
-            if (mFPSTxtBox.Text == "")
+            if (txtbox.Tag.ToString() == "m_fps" && txtbox.Text == "")
             {
                 transparentmfpslbl.Text = Global.M_FPS.ToString();
                 transparentmfpslbl.Show();
                 Sumlbl.Text = "Résolution choisie : ";
             }
-            else
+            else if (txtbox.Tag.ToString() == "m_fps" && txtbox.Text != "")
             {
                 transparentmfpslbl.Hide();
                 Sumlbl.Text = "Résolution choisie : " + WidthTxtBox.Text + "x" + HeightTxtBox.Text + "@" + mFPSTxtBox.Text + " FPS";
