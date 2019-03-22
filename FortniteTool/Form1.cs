@@ -24,7 +24,7 @@ namespace FortniteTool
             InitializeComponent();
         }
 
-        private void Load()
+        private void Init()
         {
             WidthTxtBox.Text = TextTool.GetNumbers("ResolutionSizeX=").ToString();
             HeightTxtBox.Text = TextTool.GetNumbers("ResolutionSizeY=").ToString();
@@ -45,7 +45,7 @@ namespace FortniteTool
 
         private void Form3_Load(object sender, EventArgs e)
         {
-            Load();
+            Init();
         }
 
         private void ApplyBtn_Click(object sender, EventArgs e)
@@ -66,19 +66,22 @@ namespace FortniteTool
                 MessageBox.Show(Resources.ErrorText, "Erreur!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            Load();
+            Init();
         }
 
-        private void WidthTxtBox_KeyPress(object sender, KeyPressEventArgs e)
+        private void Txt_keypress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
+        }
 
+        private void WidthTxtBox_changed(object sender, EventArgs e)
+        {
             if (WidthTxtBox.Text == "")
             {
-                transparentwidthlabel.Text = Global.ResX.ToString();
+                transparentwidthlabel.Text = Global.M_FPS.ToString();
                 transparentwidthlabel.Show();
                 Sumlbl.Text = "Résolution choisie : ";
             }
@@ -89,17 +92,11 @@ namespace FortniteTool
             }
         }
 
-        private void HeightTxtBox_KeyPress(object sender, KeyPressEventArgs e)
+        private void HeigthTxtbox_changed(object sender, EventArgs e)
         {
-
-                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-                {
-                    e.Handled = true;
-                }
-
             if (HeightTxtBox.Text == "")
             {
-                transparentheightlabel.Text = Global.ResY.ToString();
+                transparentheightlabel.Text = Global.M_FPS.ToString();
                 transparentheightlabel.Show();
                 Sumlbl.Text = "Résolution choisie : ";
             }
@@ -108,17 +105,10 @@ namespace FortniteTool
                 transparentheightlabel.Hide();
                 Sumlbl.Text = "Résolution choisie : " + WidthTxtBox.Text + "x" + HeightTxtBox.Text + "@" + mFPSTxtBox.Text + " FPS";
             }
-
         }
 
-        private void mFPSTxtBox_KeyPress(object sender, KeyPressEventArgs e)
+        private void m_fpstxtBox_changed(object sender, EventArgs e)
         {
-
-                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-                {
-                    e.Handled = true;
-                }
-
             if (mFPSTxtBox.Text == "")
             {
                 transparentmfpslbl.Text = Global.M_FPS.ToString();
@@ -130,7 +120,6 @@ namespace FortniteTool
                 transparentmfpslbl.Hide();
                 Sumlbl.Text = "Résolution choisie : " + WidthTxtBox.Text + "x" + HeightTxtBox.Text + "@" + mFPSTxtBox.Text + " FPS";
             }
-
         }
     }
 }
