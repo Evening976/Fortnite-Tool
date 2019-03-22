@@ -65,7 +65,6 @@
             this.WidthTxtBox.Size = new System.Drawing.Size(265, 20);
             this.WidthTxtBox.TabIndex = 1;
             this.WidthTxtBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.WidthTxtBox.TextChanged += new System.EventHandler(this.WidthTxtBox_TextChanged);
             this.WidthTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WidthTxtBox_KeyPress);
             // 
             // HeightTxtBox
@@ -78,7 +77,6 @@
             this.HeightTxtBox.Size = new System.Drawing.Size(265, 20);
             this.HeightTxtBox.TabIndex = 2;
             this.HeightTxtBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.HeightTxtBox.TextChanged += new System.EventHandler(this.HeightTxtBox_TextChanged);
             this.HeightTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.HeightTxtBox_KeyPress);
             // 
             // Hauteurlbl
@@ -103,7 +101,6 @@
             this.FullscreenchckBox.TabIndex = 4;
             this.FullscreenchckBox.Text = "Plein écran";
             this.FullscreenchckBox.UseVisualStyleBackColor = true;
-            this.FullscreenchckBox.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // ApplyBtn
             // 
@@ -138,7 +135,6 @@
             this.mFPSTxtBox.Size = new System.Drawing.Size(265, 20);
             this.mFPSTxtBox.TabIndex = 7;
             this.mFPSTxtBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.mFPSTxtBox.TextChanged += new System.EventHandler(this.mFPSTxtBox_TextChanged);
             this.mFPSTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mFPSTxtBox_KeyPress);
             // 
             // mFPSlbl
@@ -150,10 +146,6 @@
             this.mFPSlbl.Size = new System.Drawing.Size(78, 13);
             this.mFPSlbl.TabIndex = 8;
             this.mFPSlbl.Text = "FPS/IPS Max :";
-            // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // transparentwidthlabel
             // 

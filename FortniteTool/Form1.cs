@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FortniteTool.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,20 +24,13 @@ namespace FortniteTool
             InitializeComponent();
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void Load()
         {
-
-        }
-
-        private void Form3_Load(object sender, EventArgs e)
-        {
-            //this.Icon = new Icon(Environment.CurrentDirectory + "\\fntool.ico");
-            FullscreenchckBox.Focus();
             WidthTxtBox.Text = TextTool.GetNumbers("ResolutionSizeX=").ToString();
             HeightTxtBox.Text = TextTool.GetNumbers("ResolutionSizeY=").ToString();
             mFPSTxtBox.Text = TextTool.GetNumbers("FrameRateLimit=").ToString();
 
-            if(TextTool.GetNumbers("FullscreenMode=") == 0)
+            if (TextTool.GetNumbers("FullscreenMode=") == 0)
             {
                 FullscreenchckBox.Checked = true;
             }
@@ -47,6 +41,11 @@ namespace FortniteTool
             int.TryParse(WidthTxtBox.Text, out Global.ResX);
             int.TryParse(HeightTxtBox.Text, out Global.ResY);
             int.TryParse(mFPSTxtBox.Text, out Global.M_FPS);
+        }
+
+        private void Form3_Load(object sender, EventArgs e)
+        {
+            Load();
         }
 
         private void ApplyBtn_Click(object sender, EventArgs e)
@@ -64,19 +63,18 @@ namespace FortniteTool
             }
             else
             {
-                MessageBox.Show("J'crois que tu t'es trompé sur ta résolution, à moins que tu essaies de me pranker ? allez change moi ça avant que ça parte en tête à tête à Tilted", "Erreur!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Resources.ErrorText, "Erreur!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            Form3_Load(sender, e);
+            Load();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void WidthTxtBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
-        }
-
-        private void WidthTxtBox_TextChanged(object sender, EventArgs e)
-        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
 
             if (WidthTxtBox.Text == "")
             {
@@ -91,8 +89,13 @@ namespace FortniteTool
             }
         }
 
-        private void HeightTxtBox_TextChanged(object sender, EventArgs e)
+        private void HeightTxtBox_KeyPress(object sender, KeyPressEventArgs e)
         {
+
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
 
             if (HeightTxtBox.Text == "")
             {
@@ -105,10 +108,17 @@ namespace FortniteTool
                 transparentheightlabel.Hide();
                 Sumlbl.Text = "Résolution choisie : " + WidthTxtBox.Text + "x" + HeightTxtBox.Text + "@" + mFPSTxtBox.Text + " FPS";
             }
+
         }
 
-        private void mFPSTxtBox_TextChanged(object sender, EventArgs e)
+        private void mFPSTxtBox_KeyPress(object sender, KeyPressEventArgs e)
         {
+
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
             if (mFPSTxtBox.Text == "")
             {
                 transparentmfpslbl.Text = Global.M_FPS.ToString();
@@ -120,34 +130,7 @@ namespace FortniteTool
                 transparentmfpslbl.Hide();
                 Sumlbl.Text = "Résolution choisie : " + WidthTxtBox.Text + "x" + HeightTxtBox.Text + "@" + mFPSTxtBox.Text + " FPS";
             }
-        }
 
-        private void WidthTxtBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void HeightTxtBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-                {
-                    e.Handled = true;
-                }
-            
-        }
-
-        private void mFPSTxtBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-                {
-                    e.Handled = true;
-                }
-            
         }
     }
 }
